@@ -1,6 +1,6 @@
 # Cam Address
 
-Cambodia Address detector, auto get latlng on city/province changed and auto select city/province, district, commune and village base on selected location on map.
+Cambodia Address detector, auto get latlng on city/province changed and auto select city/province, district and commune base on selected location on map.
 This tool built base on `https://data.mef.gov.kh/` data
 
 ## Setup
