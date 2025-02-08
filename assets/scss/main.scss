@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Battambang&display=swap");
+
+* { 
+  font-family: 'Battambang', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
