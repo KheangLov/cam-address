@@ -1,6 +1,7 @@
-# Nuxt Minimal Starter
+# Cam Address
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Cambodia Address detector, auto get latlng on city/province changed and auto select city/province, district, commune and village base on selected location on map.
+This tool built base on `https://data.mef.gov.kh/` data
 
 ## Setup
 
@@ -71,5 +72,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
