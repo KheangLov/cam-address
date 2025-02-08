@@ -11,18 +11,13 @@
           hide-details
         ></v-checkbox>
       </div>
-      <!-- <span v-if="address" class="bg-white pa-2 rounded elevation-1">
-        {{ address }}
-      </span> -->
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
 import { useStore } from '@/stores/provinceStore';
 
-const address = ref('');
 const store = useStore();
 const showBoundaries = ref(false);
 
@@ -31,7 +26,7 @@ let geojsonLayer;
 let marker;
 let map;
 
-onMounted(async () => {
+onBeforeMount(async () => {
   if (import.meta.client) {
     const L = await import('leaflet');
     await import('leaflet/dist/leaflet.css');
@@ -90,19 +85,16 @@ onMounted(async () => {
       });
 
       if (foundFeature) {
-        const { ADM1_EN, ADM2_EN, ADM3_EN, ADM3_PCODE } = foundFeature.properties;
-        address.value = `ខេត្ត: ${ADM1_EN}, District: ${ADM2_EN}, Commune: ${ADM3_EN}`;
+        const { ADM3_PCODE } = foundFeature.properties;
 
         store.setCode(ADM3_PCODE.replace('KH', ''));
-      } else {
-        address.value = 'Address not found';
       }
     });
 
     watch(showBoundaries, (newValue) => {
       geojsonLayer.setStyle({
         opacity: newValue ? 0.5 : 0,
-        fillOpacity: newValue ? 0.10 : 0
+        fillOpacity: newValue ? 0.1 : 0
       });
     });
   }
@@ -112,9 +104,7 @@ watch(
   () => store.province,
   (newValue) => {
     if (newValue.lat && newValue.lng) {
-      if (marker) {
-        map.removeLayer(marker);
-      }
+      marker && map.removeLayer(marker);
 
       const { lat, lng } = newValue;
       marker = L.marker({ lat, lng }, { icon: flatIcon }).addTo(map);

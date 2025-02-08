@@ -47,7 +47,6 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
 import { useStore } from '@/stores/provinceStore';
 
 const nuxtApp = useNuxtApp();
