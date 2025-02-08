@@ -3,6 +3,9 @@ import vuetify from 'vite-plugin-vuetify';
 
 export default defineNuxtConfig({
   app: {
+    head: {
+      title: 'Cambodia Address Detector',
+    },
     rootAttrs: {
       class: 'h-100'
     }
