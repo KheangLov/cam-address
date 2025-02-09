@@ -6,8 +6,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineEventHandler((event) => {
-  const filePath = path.join(__dirname, '../../addresses/CambodiaCommuneList2023.json');
-  
+  console.log({ __dirname })
+  const filePath = path.join(__dirname, '/addresses/CambodiaCommuneList2023.json');
+  console.log({ filePath })
   try {
     const data = fs.readFileSync(filePath, 'utf-8');
     const communes = JSON.parse(data);
