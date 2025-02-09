@@ -1,13 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-
-export default defineEventHandler(() => {
-  const filePath = path.resolve(process.cwd(), 'addresses', 'CambodiaProvinceList2023.json');
-  console.log(filePath, process.cwd());
-  
+export default defineEventHandler(async () => {
   try {
-    const data = fs.readFileSync(filePath, 'utf-8');
-    const provinces = JSON.parse(data);
+    const provinces = await $fetch(`${process.env.BASE_URL}/addresses/CambodiaProvinceList2023.json`);
     return provinces;
   } catch (error) {
     return {

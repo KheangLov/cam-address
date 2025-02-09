@@ -1,17 +1,11 @@
-import fs from 'fs';
-import path from 'path';
-
-export default defineEventHandler((event) => {
-  const filePath = path.resolve(process.cwd(), 'addresses', 'CambodiaVillagesList2023.json');
-
+export default defineEventHandler(async (event) => {
   try {
-    const data = fs.readFileSync(filePath, 'utf-8');
-    const villages = JSON.parse(data);
+    const villages = await $fetch(`${process.env.BASE_URL}/addresses/CambodiaVillagesList2023.json`);
 
     const query = getQuery(event);
     const { commune } = query;
 
-    const filteredVillages = villages.filter((village) =>
+    const filteredVillages = villages?.filter((village) =>
       village.code.padStart(8, '0').substring(0, 6) === commune?.toString().padStart(6, '0')
     );
 
