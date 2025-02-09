@@ -2,6 +2,11 @@
 import vuetify from 'vite-plugin-vuetify';
 
 export default defineNuxtConfig({
+  nitro: {
+    storage: {
+      data: { driver: 'vercelKV' }
+    }
+  },
   app: {
     head: {
       title: 'Cambodia Address Detector',
