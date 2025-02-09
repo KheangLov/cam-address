@@ -22,7 +22,6 @@ export default defineNuxtConfig({
   },
   plugins: [
     '~/plugins/vuetify.ts',
-    '~/plugins/provinces.ts',
   ],
   vite: {
     plugins: [
