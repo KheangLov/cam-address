@@ -1,12 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-
-export default defineEventHandler((event) => {
-  const filePath = path.resolve(process.cwd(), 'addresses', 'CambodiaCommuneList2023.json')
-
+export default defineEventHandler(async (event) => {
   try {
-    const data = fs.readFileSync(filePath, 'utf-8');
-    const communes = JSON.parse(data);
+    const communes = await $fetch(`${process.env.BASE_URL}/addresses/CambodiaCommuneList2023.json`);
 
     const query = getQuery(event);
     const { district } = query;

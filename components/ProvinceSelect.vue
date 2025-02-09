@@ -52,7 +52,7 @@ import { useStore } from '@/stores/provinceStore';
 const nuxtApp = useNuxtApp();
 const store = useStore();
 
-const provinces = ref(nuxtApp.$provinces);
+const provinces = ref(nuxtApp.$provinces || [{ code: null, name_km: '' }]);
 const districts = ref([]);
 const communes = ref([]);
 const villages = ref([]);
