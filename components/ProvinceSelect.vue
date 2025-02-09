@@ -49,10 +49,9 @@
 <script setup>
 import { useStore } from '@/stores/provinceStore';
 
-const nuxtApp = useNuxtApp();
 const store = useStore();
 
-const provinces = ref(nuxtApp.$provinces || [{ code: null, name_km: '' }]);
+const provinces = ref([]);
 const districts = ref([]);
 const communes = ref([]);
 const villages = ref([]);
@@ -61,6 +60,16 @@ const selectedProvince = ref(null);
 const selectedDistrict = ref(null);
 const selectedCommune = ref(null);
 const selectedVillage = ref(null);
+
+const fetchProvinces = async () => {
+  try {
+    selectedProvince.value = null;
+    const data = await $fetch(`/api/provinces`);
+    provinces.value = data;
+  } catch (error) {
+    console.error('Error fetching districts:', error);
+  }
+};
 
 const fetchDistricts = async (value) => {
   try {
@@ -91,6 +100,10 @@ const fetchVillages = async (value) => {
     console.error('Error fetching villages:', error);
   }
 };
+
+onBeforeMount(async () => {
+  await fetchProvinces();
+});
 
 let isUpdating = false;
 
