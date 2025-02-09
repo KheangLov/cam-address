@@ -1,12 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export default defineEventHandler((event) => {
-  const filePath = path.join(__dirname, '../../addresses/CambodiaDistrictList2023.json');
+  const filePath = path.resolve(process.cwd(), 'addresses', 'CambodiaDistrictList2023.json');
   
   try {
     const data = fs.readFileSync(filePath, 'utf-8');
