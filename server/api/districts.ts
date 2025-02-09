@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineEventHandler((event) => {
-  const filePath = path.join(__dirname, '../../public/addresses/CambodiaDistrictList2023.json');
+  const filePath = path.join(__dirname, '../../addresses/CambodiaDistrictList2023.json');
   
   try {
     const data = fs.readFileSync(filePath, 'utf-8');
