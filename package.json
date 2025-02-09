@@ -20,9 +20,6 @@
     "vuetify": "3.7.0-beta.1"
   },
   "devDependencies": {
-    "@vercel/kv": "^3.0.0",
-    "@vercel/node": "^5.1.2",
-    "@vercel/static-build": "^2.6.1",
     "sass": "^1.84.0",
     "vite-plugin-vuetify": "^2.1.0"
   }
